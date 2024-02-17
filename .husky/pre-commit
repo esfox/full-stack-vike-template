@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run env -- concurrently 'npm run format' 'npm run env -- lint-staged --allow-empty' 'npm run env -- cspell .'
+

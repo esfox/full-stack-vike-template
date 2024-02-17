@@ -1,0 +1,38 @@
+{
+  "name": "full-stack-vike-template",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "postinstall": "cp node_modules/typed-html/dist/esm/src/elements.js node_modules/typed-html/dist/esm/elements.js",
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx && cspell .",
+    "format": "prettier -w --ignore-unknown .",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "cspell": "^8.3.2",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vike": "^0.4.161",
+    "vite": "^5.1.1"
+  },
+  "dependencies": {
+    "typed-html": "^3.0.1"
+  }
+}
