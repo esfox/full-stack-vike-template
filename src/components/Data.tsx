@@ -1,4 +1,3 @@
-import * as elements from 'typed-html';
 import { Json } from './Json';
 
 export async function Data() {

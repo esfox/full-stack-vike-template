@@ -1,3 +1,4 @@
+import '@kitajs/html/register';
 import ssr from 'vike/plugin';
 import { defineConfig } from 'vite';
 

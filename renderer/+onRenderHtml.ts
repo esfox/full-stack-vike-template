@@ -2,6 +2,7 @@
 
 import { dangerouslySkipEscape } from 'vike/server';
 import type { OnRenderHtmlAsync } from 'vike/types';
+import { Index } from '../src';
 
 /**
  * The onRenderHtml() hook defines how pages are rendered to HTML.
@@ -9,8 +10,9 @@ import type { OnRenderHtmlAsync } from 'vike/types';
  */
 const onRenderHtml: OnRenderHtmlAsync = async (pageContext): ReturnType<OnRenderHtmlAsync> => {
   const { Page } = pageContext;
-  const pageHtml = await (Page as () => Promise<string>)();
-  const documentHtml = dangerouslySkipEscape(pageHtml);
+  const pageContent = await (Page as () => Promise<string>)();
+  const html = await Index({ children: pageContent });
+  const documentHtml = dangerouslySkipEscape(html);
 
   return {
     documentHtml,
