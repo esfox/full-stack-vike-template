@@ -1,3 +1,4 @@
+import '@kitajs/html/register';
 import { Json } from './Json';
 
 export async function Data() {

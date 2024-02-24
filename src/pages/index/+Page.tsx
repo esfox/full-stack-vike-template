@@ -1,4 +1,6 @@
+import '@kitajs/html/register';
 import { Data } from '../../components/Data';
+import { Form } from '../../components/Form';
 
 export async function Page() {
   return (
@@ -16,6 +18,15 @@ export async function Page() {
       <br />
       <br />
       <Data />
+      <br />
+      <br />
+      <Form />
+      <br />
+      <br />
+      Go to{' '}
+      <a hx-boost="true" href="/about" class="underline text-blue-500">
+        About
+      </a>
     </>
   );
 }

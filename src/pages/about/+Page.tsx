@@ -1,3 +1,5 @@
+import '@kitajs/html/register';
+
 export async function Page() {
   return (
     <>
