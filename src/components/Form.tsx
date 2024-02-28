@@ -1,3 +1,4 @@
+/// <reference types="@kitajs/html/htmx.d.ts" />
 import '@kitajs/html/register';
 
 const users = [
@@ -24,17 +25,29 @@ export function Form() {
         hx-target="#result"
         class="grid grid-cols-1 gap-4 p-6"
       >
-        <div>
-          <label for="title">Title</label>
-          <input type="text" class="block" id="title" name="title" />
+        <div class="form-control max-w-xs">
+          <div class="label">
+            <label class="label-text" for="title">
+              Title
+            </label>
+          </div>
+          <input type="text" class="input input-bordered block" id="title" name="title" />
         </div>
-        <div>
-          <label for="body">Body</label>
-          <textarea class="block" id="body" name="body" />
+        <div class="form-control max-w-xs">
+          <div class="label">
+            <label class="label-text" for="body">
+              Body
+            </label>
+          </div>
+          <textarea class="textarea textarea-bordered block" id="body" name="body" />
         </div>
-        <div>
-          <label for="userId">User ID</label>
-          <select class="block" id="userId" name="userId">
+        <div class="form-control max-w-xs">
+          <div class="label">
+            <label class="label-text" for="userId">
+              User ID
+            </label>
+          </div>
+          <select class="input input-bordered block" id="userId" name="userId">
             {users.map(user => (
               <option value={user.id.toString()} safe>
                 {user.name}

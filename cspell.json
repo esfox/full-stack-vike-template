@@ -1,7 +1,7 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": ["vike", "templating"],
+  "words": ["vike", "templating", "supabase", "htmx", "daisyui", "kitajs", "unchanged"],
   "ignorePaths": [
     "node_modules/",
     "build/",

@@ -1,9 +1,14 @@
+import * as dotenv from 'dotenv';
 import express from 'express';
 import { renderPage } from 'vike/server';
 import { type ExtendedContext } from '../types';
 
 const pwd = process.cwd();
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV?.startsWith('production');
+
+if (!isProduction) {
+  dotenv.config();
+}
 
 async function startServer() {
   const app = express();
@@ -36,20 +41,22 @@ async function startServer() {
     const extendedPageContext: Partial<ExtendedContext> = {
       httpMethod: request.method,
       requestBody: request.body,
-    };
-
-    const pageContextInit = {
+      serverUrl: `${request.protocol}://${request.get('host')}`,
       urlOriginal: request.originalUrl,
-      ...extendedPageContext,
     };
 
-    const pageContext = await renderPage(pageContextInit);
+    const pageContext = await renderPage(extendedPageContext);
     if (pageContext.httpResponse === null) {
       next();
       return;
     }
 
-    const { statusCode, contentType } = pageContext.httpResponse;
+    const { statusCode, contentType, headers } = pageContext.httpResponse;
+
+    headers.forEach(([name, value]) => {
+      response.set(name, value);
+    });
+
     response.status(statusCode).type(contentType);
     pageContext.httpResponse.pipe(response);
   });
